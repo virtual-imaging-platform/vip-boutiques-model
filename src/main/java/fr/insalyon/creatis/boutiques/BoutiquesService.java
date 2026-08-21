@@ -50,6 +50,13 @@ public class BoutiquesService {
             .collect(Collectors.toSet());
     }
 
+    public Set<String> getInputDefaultOfBoutiquesFile(BoutiquesDescriptor boutiquesDescriptor) {
+        return boutiquesDescriptor.getInputs().stream()
+            .filter((i) -> i.getDefaultValue() != null)
+            .map((i) -> i.getId())
+            .collect(Collectors.toSet());
+    }
+
     public Set<String> getCrossMap(BoutiquesDescriptor boutiquesDescriptor) {
         return extractCustomField(boutiquesDescriptor, "vip:cross");
     }
